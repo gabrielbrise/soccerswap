@@ -1,0 +1,306 @@
+<RootWidget>:
+   orientation: "vertical"
+   FloatLayout:
+      id: tela1
+      Timer:
+         id: clock
+      Button:
+         size_hint: 1.0, .08
+         pos_hint: {"center_x": .5, "y": .92}
+         text: "SOCCER SWAP"
+         padding: 0, 0
+#         font_size: 40
+         font_size: self.height
+         text_size: None, self.height - .125*self.height
+         font_name: "rheiborn.ttf"
+         background_color:  .7, .9, .4, 1
+         background_normal: ""
+         background_down: ""
+
+      Options:
+
+      Functions:
+         id: func
+
+      PlayerList:
+         id: player_list
+
+
+<PlayerCarousel@Carousel>:
+   BtDelete:
+
+<Options@FloatLayout>:
+   size_hint: .08, .08
+   pos_hint: {"right": .98, "top": 1}
+#   canvas:
+#      Color:
+#         rgb: .7, .9, .4, 1
+#      Rectangle:
+#         size: self.size
+   Button:
+      id: options
+      size_hint: None, None
+      size: root.height, root.height
+      pos_hint: {"center_x": .5, "center_y": .5}
+      #padding: 20, 20
+#      background_color:  1, 1, 1, 1
+      background_normal: "options.png"
+      background_down: "options_d.png"
+      on_press: root.White(0)
+      on_release: root.Green(0)
+      border: 0, 0, 0, 0
+
+<PlayerInput@FloatLayout>:
+   id: player_input
+   size_hint: .8, .2
+   pos_hint: {"center_x": .5, "center_y": .5}
+
+   canvas:
+      Color:
+         rgb: .7, .9, .4, 1
+#      Line:
+#         points: self.x, self.y, self.x , self.height, self.width, self.height, self.width, self.y, self.x, self.y
+#         width: 1
+
+   BoxLayout:
+      pos_hint: {"center_x": .5, "center_y": .5}
+      orientation: "vertical"
+      TextInput:
+         id: player_name_input
+         font_size: .3*self.height
+         background_normal: ""
+         background_color: .7, .9, .4, .5
+
+      BoxLayout:
+         size_hint: 1, .5
+         orientation: "horizontal"
+         Button:
+            text: "Cancelar"
+            on_press: root.RemoveWindow()
+            background_normal: ""
+            font_size: .5*self.height
+            background_color: .7, .9, .4, .3
+            color: 1, .1, .1, 1
+         Button:
+            text: "OK"
+            on_press: root.AddPlayer()
+            background_normal: ""
+            font_size: .8*self.height
+            bold: True
+            background_color: .7, .9, .4, .3
+            color: .7, .9, .4, 1
+
+<TimerInput@FloatLayout>:
+   id: timer_input
+   size_hint: .8, .2
+   pos_hint: {"center_x": .5, "center_y": .5}
+   BoxLayout:
+      pos_hint: {"center_x": .5, "center_y": .5}
+      orientation: "vertical"
+      TextInput:
+         id: timer_seconds_input
+         input_type: "number"
+         font_size: .3*self.height
+         color: 0, 0, 0, 1
+         background_normal: ""
+         background_color: .7, .9, .4, .5
+
+      BoxLayout:
+         size_hint: 1, .5
+         orientation: "horizontal"
+         Button:
+            text: "Cancelar"
+            on_press: root.RemoveWindow()
+            font_size: .5*self.height
+            background_normal: ""
+            background_color: .7, .9, .4, .3
+            color: 1, .1, .1, 1
+         Button:
+            text: "OK"
+            on_press: root.NewTime()
+            background_normal: ""
+#            font_size: 24
+            font_size: .8*self.height
+            bold: True
+            background_color: .7, .9, .4, .3
+            color: .7, .9, .4, 1
+
+#<TimerInput@FloatLayout>:
+#   id: timer_input
+#   size_hint: .8, .2
+#   pos_hint: {"center_x": .5, "center_y": .5}
+#   BoxLayout:
+#      pos_hint: {"center_x": .5, "center_y": .5}
+#      orientation: "vertical"
+#      TextInput:
+#         id: timer_seconds_input
+#         input_type: "number"
+#         font_size: .5*self.height
+#         color: 0, 0, 0, 1
+#         background_normal: ""
+#
+#      BoxLayout:
+#         size_hint: 1, .5
+#         orientation: "horizontal"
+#         Button:
+#            text: "Cancelar"
+#            on_press: root.RemoveWindow()
+#            font_size: .5*self.height
+#            background_normal: ""
+##            background_color: .7, .9, .4, 1
+#            color: 1, .1, .1, 1
+#         Button:
+#            text: "OK"
+#            on_press: root.NewTime()
+#            background_normal: ""
+##            font_size: 24
+#            font_size: .8*self.height
+#            bold: True
+##            background_color: .7, .9, .4, 1
+#            color: .7, .9, .4, 1
+
+<Functions@BoxLayout>:
+   orientation: "horizontal"
+   size_hint: 1, .08
+   pos_hint: {"x": 0, "y": 0}
+#   background_color:  .7, .9, .4, 1
+
+
+   Randomize:
+
+   Button:
+      id: start
+      text: "PLAY"
+      font_size: .9*self.height
+      text_size: None, self.height - .225*self.height
+      font_name: "rheiborn.ttf"
+      background_color:  .7, .9, .4, 1
+      background_normal: ""
+      background_down: ""
+      on_press: root.TimerOn()
+
+
+   Button:
+      id: add_player
+      text: "+"
+      size_hint_x: .5
+      font_size: 1.1*self.height
+      #font_name: "rheiborn.ttf"
+      background_color:  .7, .9, .4, 1
+      background_normal: ""
+      background_down: ""
+      on_press: root.NewPlayerWindow()
+      on_press: root.White(2)
+      on_press: root.Green(2)
+
+
+<Randomize@FloatLayout>:
+#   background_color:  .7, .9, .4, 1
+   size_hint: .5, 1
+   canvas:
+      Color:
+         rgb: .7, .9, .4, 1
+      Rectangle:
+         size: self.size
+   Button:
+      id: randomize
+      size_hint: None, None
+      size: root.height * 1.3 - .3*root.height, root.height - .3*root.height
+      pos_hint: {"center_x": .5, "center_y": .5}
+      padding: 20, 20
+      background_color:  1, 1, 1, 1
+      background_normal: "random.png"  #created by useiconic.com from noun project
+      background_down: "random_d.png"
+      border: 0, 0, 0, 0
+      on_press: root.Randomize()
+      on_press: root.White()
+      on_release: root.Green()
+
+<Timer@Button>
+   background_normal: ""
+   background_color: 1, 1, 1, 0
+   size_hint: 1, .15
+   pos_hint: {"x": 0, "top": .92}
+   text: root.StartTime()
+   font_size: .8*self.height
+   color: .7, .9, .4, 1
+   on_press: root.NewTimeWindow()
+   canvas.before:
+      Color:
+         rgba: .7, .9, .4, 1
+      Line:
+         points: self.x + .18*self.width, self.y, self.width - .18*self.width, self.y
+         width: 2
+
+
+<Bt@Button>:
+#   on_press: root.RemovePlayer()
+   background_color: .99, .99, .99, 1.
+   background_normal: ""
+   background_down: ""
+   color: .7, .9, .4, 1
+   size_hint: 1, 1
+#   font_size: 18
+   font_size: "18sp"
+   canvas.after:
+      Color:
+         rgba: .7, .9, .4, 1
+      Line:
+         points: self.x, self.y + 1, self.width, self.y + 1
+         width: 1
+
+<BtReady@Bt>:
+   on_press: root.RemovePlayer()
+   background_color: .7, .9, .4, .5
+
+<BtDelete@Bt>:
+   text: "X"
+   color: 1, 0, 0, 1
+#   font_size: 30
+   on_press: root.Del()
+   font_name: "rheiborn.ttf"
+
+
+
+<PlayerList@BoxLayout>:
+   orientation: "vertical"
+   size_hint: 1.0, .68
+   pos_hint: {"center_x": .5, "top": .76}
+
+
+
+##### old dragable player input box
+
+#<PlayerBox>:
+#   # Define the properties for the DragLabel
+#   #size_hint: 1, .05
+#   #pos_hint: {"center_x": .5, "center_y": .5}
+#   size_hint: 1, .05
+#   drag_rectangle: self.x, self.y, self.width, self.height
+#   #   drag_rectangle: self.pos_hint_x , self.pos_hint_y, self.width, self.height
+#   drag_timeout: 1000
+#   drag_distance: 0
+#   id: "player_box"
+#
+#   TextInput:
+#      id: player_input
+#      size_hint: .8, 1
+#      pos_hint: {"center_x": .5, "center_y": .5}
+#      text: "Nome do Jogador"
+#      font_size: 16
+#      font_name: "coolvetica.ttf"
+#      background_color: .80, 1.00, .35, .5
+#      background_normal: ""
+#      foreground_color: 1, 1, 1, 1
+#
+#   Button:
+#      id: add_player
+#      size_hint: .2, 1
+#      pos_hint: {"center_x": .5, "center_y": .5}
+#      text: "+"
+#      font_size: 30
+#      font_name: "coolvetica.ttf"
+#      background_color: .80, 1.00, .35, .5
+#      on_press: root.AddPlayer()
+
+
